@@ -37,3 +37,69 @@ Run the following command as `root` (or with `sudo`):
 
 ```bash
 curl -sSL [https://raw.githubusercontent.com/JackTheGit/amadeus-node-autoinstall/refs/heads/main/setup.sh](https://raw.githubusercontent.com/JackTheGit/amadeus-node-autoinstall/refs/heads/main/setup.sh) | sudo bash
+```
+
+## 🔑 Crucial Step: Activating Mining Rewards
+
+Once the installer finishes, your node will automatically generate a dedicated wallet. To submit matrix solutions (`submit_sol`) and earn block rewards, **the node wallet requires a minimum balance of 3 $AMA to cover network gas fees.**
+
+1. **Attach to your node's console:**
+   ```bash
+   sudo screen -r amadeusd
+   ```
+
+2. **Copy your node's public wallet address** displayed in the log lines (starts with `6y...` or similar Base58 string).
+
+3. **Send 3 – 5 $AMA** to that address.
+
+4. **Verify:** As soon as the transaction confirms on-chain, the `cannot compute: no key has at least 3 AMA` warning will clear, and your balance will update next to the `💰` icon.
+
+---
+
+## 🛠️ Management & Useful Commands
+
+### 🖥️ Console & Live Logs
+| Action | Command / Shortcut |
+| :--- | :--- |
+| **Attach to live node console** | `sudo screen -r amadeusd` |
+| **Safely detach (keep node running)** | Press `Ctrl + A`, then press `D` |
+| **Check background service status** | `sudo systemctl status amadeusd` |
+
+> ⚠️ **Warning:** Never use `Ctrl + C` inside the screen session, as this will terminate the node process. Always use `Ctrl + A`, then `D` to safely detach.
+
+### 🔄 Service Control
+```bash
+# Restart the node
+sudo systemctl restart amadeusd
+
+# Stop the node
+sudo systemctl stop amadeusd
+
+# Start the node
+sudo systemctl start amadeusd
+```
+
+---
+
+## 🔒 Security & Wallet Backup
+
+Your node's cryptographic seed is stored in its working cache directory:
+```text
+/root/.cache/amadeusd/seeds
+```
+- **Never share the contents of the `seeds` directory with anyone.**
+- Keep a secure backup of this file to retain access to your node's accumulated mining rewards.
+
+---
+
+## 📚 Resources & Links
+
+- **Official Website:** [ama.one](https://ama.one)
+- **Documentation:** [docs.ama.one](https://docs.ama.one)
+- **GitHub Repository:** [github.com/amadeusprotocol/node](https://github.com/amadeusprotocol/node)
+
+---
+
+## 📄 License
+
+This repository is distributed under the [MIT License](LICENSE).
