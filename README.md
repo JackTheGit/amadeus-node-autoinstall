@@ -19,6 +19,16 @@
 
 ---
 
+## 📸 Visual Overview
+
+### 1. Automated Installation
+![Amadeus 1-Click Installer](installer.png)
+
+### 2. Verified Active Service
+![Amadeus Systemd Service Status](status.png)
+
+---
+
 ## 💻 System Requirements
 
 | Specification | Recommended | Minimum |
